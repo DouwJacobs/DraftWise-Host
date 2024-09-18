@@ -1,4 +1,4 @@
-import Stripe from 'stripe';
+import type Stripe from 'stripe';
 import { stripe } from '@/utils/stripe/config';
 import {
   upsertProductRecord,
@@ -31,9 +31,8 @@ export async function POST(req: Request) {
     if (!sig || !webhookSecret)
       return new Response('Webhook secret not found.', { status: 400 });
     event = stripe.webhooks.constructEvent(body, sig, webhookSecret);
-    console.log(`🔔  Webhook received: ${event.type}`);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
-    console.log(`❌ Error message: ${err.message}`);
     return new Response(`Webhook Error: ${err.message}`, { status: 400 });
   }
 
@@ -57,6 +56,7 @@ export async function POST(req: Request) {
         case 'customer.subscription.created':
         case 'customer.subscription.updated':
         case 'customer.subscription.deleted':
+          // eslint-disable-next-line no-case-declarations
           const subscription = event.data.object as Stripe.Subscription;
           await manageSubscriptionStatusChange(
             subscription.id,
@@ -65,6 +65,7 @@ export async function POST(req: Request) {
           );
           break;
         case 'checkout.session.completed':
+          // eslint-disable-next-line no-case-declarations
           const checkoutSession = event.data.object as Stripe.Checkout.Session;
           if (checkoutSession.mode === 'subscription') {
             const subscriptionId = checkoutSession.subscription;
@@ -79,9 +80,8 @@ export async function POST(req: Request) {
           throw new Error('Unhandled relevant event!');
       }
     } catch (error) {
-      console.log(error);
       return new Response(
-        'Webhook handler failed. View your Next.js function logs.',
+        `Webhook handler failed. View your Next.js function logs. ${error}`,
         {
           status: 400
         }

@@ -1,14 +1,15 @@
-import React, { InputHTMLAttributes, ChangeEvent } from 'react';
+import type { InputHTMLAttributes, ChangeEvent } from 'react';
 import cn from 'classnames';
 
 import s from './Input.module.css';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 interface Props extends Omit<InputHTMLAttributes<any>, 'onChange'> {
   className?: string;
   onChange: (value: string) => void;
 }
 const Input = (props: Props) => {
-  const { className, children, onChange, ...rest } = props;
+  const { className, onChange, ...rest } = props;
 
   const rootClassName = cn(s.root, {}, className);
 

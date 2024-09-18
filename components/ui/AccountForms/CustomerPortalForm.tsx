@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { createStripePortal } from '@/utils/stripe/server';
 import Link from 'next/link';
 import Card from '@/components/ui/Card';
-import { Tables } from '@/types_db';
+import type { Tables } from '@/types_db';
 
 type Subscription = Tables<'subscriptions'>;
 type Price = Tables<'prices'>;
@@ -33,6 +33,7 @@ export default function CustomerPortalForm({ subscription }: Props) {
     subscription &&
     new Intl.NumberFormat('en-US', {
       style: 'currency',
+      // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
       currency: subscription?.prices?.currency!,
       minimumFractionDigits: 0
     }).format((subscription?.prices?.unit_amount || 0) / 100);

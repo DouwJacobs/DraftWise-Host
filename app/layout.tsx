@@ -1,13 +1,15 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import Footer from '@/components/ui/Footer';
 import Navbar from '@/components/ui/Navbar';
 import { Toaster } from '@/components/ui/Toasts/toaster';
-import { PropsWithChildren, Suspense } from 'react';
+import type { PropsWithChildren } from 'react';
+import { Suspense } from 'react';
 import { getURL } from '@/utils/helpers';
 import 'styles/main.css';
 
-const title = 'Next.js Subscription Starter';
-const description = 'Brought to you by Vercel, Stripe, and Supabase.';
+const title = 'DraftWise';
+const description =
+  'Discover the ultimate solution for legal professionals with our Draftwise platform. Streamline your quote setup and antenuptial contract creation with ease. Explore flexible subscription plans tailored to your needs and start optimizing your legal workflow today.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(getURL()),

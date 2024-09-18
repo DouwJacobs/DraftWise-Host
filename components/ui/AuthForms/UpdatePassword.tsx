@@ -4,7 +4,8 @@ import Button from '@/components/ui/Button';
 import { updatePassword } from '@/utils/auth-helpers/server';
 import { handleRequest } from '@/utils/auth-helpers/client';
 import { useRouter } from 'next/navigation';
-import React, { useState } from 'react';
+import type React from 'react';
+import { useState } from 'react';
 
 interface UpdatePasswordProps {
   redirectMethod: string;
@@ -13,6 +14,7 @@ interface UpdatePasswordProps {
 export default function UpdatePassword({
   redirectMethod
 }: UpdatePasswordProps) {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const router = redirectMethod === 'client' ? useRouter() : null;
   const [isSubmitting, setIsSubmitting] = useState(false);
 

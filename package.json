@@ -4,8 +4,11 @@
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint \"./app/**/*.{ts,tsx}\" \"./components/**/*.{ts,tsx}\" --cache",
     "prettier-fix": "prettier --write .",
+    "format": "prettier --log-level warn --write --cache .",
+    "format:check": "prettier --check --cache .",
+    "typecheck": "yarn typecheck:server && yarn typecheck:client",
     "stripe:login": "stripe login",
     "stripe:listen": "stripe listen --forward-to=localhost:3000/api/webhooks",
     "stripe:fixtures": "stripe fixtures fixtures/stripe-fixtures.json",
@@ -19,7 +22,8 @@
     "supabase:generate-migration": "npx supabase db diff | npx supabase migration new",
     "supabase:generate-seed": "npx supabase db dump --data-only -f supabase/seed.sql",
     "supabase:push": "npx supabase db push",
-    "supabase:pull": "npx supabase db pull"
+    "supabase:pull": "npx supabase db pull",
+    "prepare": "husky"
   },
   "dependencies": {
     "@radix-ui/react-toast": "^1.1.5",
@@ -43,16 +47,41 @@
     "@types/node": "^20.14.2",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^8.6.0",
     "autoprefixer": "^10.4.19",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.57.0",
     "eslint-config-next": "14.1.0",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-formatjs": "^4.13.3",
+    "eslint-plugin-no-relative-import-paths": "^1.5.5",
     "eslint-plugin-react": "^7.34.2",
     "eslint-plugin-tailwindcss": "^3.17.3",
+    "husky": "^9.1.6",
     "postcss": "^8.4.38",
     "prettier": "^3.3.1",
     "prettier-plugin-tailwindcss": "^0.5.14",
     "supabase": "^1.172.2",
     "typescript": "^5.4.5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx,js}": [
+      "prettier --write",
+      "eslint"
+    ],
+    "**/*.{json,md,css}": [
+      "prettier --write"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }

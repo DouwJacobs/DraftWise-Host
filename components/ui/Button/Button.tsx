@@ -1,7 +1,9 @@
 'use client';
 
 import cn from 'classnames';
-import React, { forwardRef, useRef, ButtonHTMLAttributes } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
+import type React from 'react';
+import { forwardRef, useRef } from 'react';
 import { mergeRefs } from 'react-merge-refs';
 
 import LoadingDots from '@/components/ui/LoadingDots';
