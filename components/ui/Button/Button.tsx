@@ -1,21 +1,21 @@
-'use client';
+'use client'
 
-import cn from 'classnames';
-import type { ButtonHTMLAttributes } from 'react';
-import type React from 'react';
-import { forwardRef, useRef } from 'react';
-import { mergeRefs } from 'react-merge-refs';
+import cn from 'classnames'
+import type React from 'react'
+import type { ButtonHTMLAttributes } from 'react'
+import { forwardRef, useRef } from 'react'
+import { mergeRefs } from 'react-merge-refs'
 
-import LoadingDots from '@/components/ui/LoadingDots';
+import LoadingDots from '@/components/ui/LoadingDots'
 
-import styles from './Button.module.css';
+import styles from './Button.module.css'
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'slim' | 'flat';
-  active?: boolean;
-  width?: number;
-  loading?: boolean;
-  Component?: React.ComponentType;
+  variant?: 'slim' | 'flat'
+  active?: boolean
+  width?: number
+  loading?: boolean
+  Component?: React.ComponentType
 }
 
 const Button = forwardRef<HTMLButtonElement, Props>((props, buttonRef) => {
@@ -30,17 +30,17 @@ const Button = forwardRef<HTMLButtonElement, Props>((props, buttonRef) => {
     style = {},
     Component = 'button',
     ...rest
-  } = props;
-  const ref = useRef(null);
+  } = props
+  const ref = useRef(null)
   const rootClassName = cn(
     styles.root,
     {
       [styles.slim]: variant === 'slim',
       [styles.loading]: loading,
-      [styles.disabled]: disabled
+      [styles.disabled]: disabled,
     },
     className
-  );
+  )
   return (
     <Component
       aria-pressed={active}
@@ -50,7 +50,7 @@ const Button = forwardRef<HTMLButtonElement, Props>((props, buttonRef) => {
       disabled={disabled}
       style={{
         width,
-        ...style
+        ...style,
       }}
       {...rest}
     >
@@ -61,8 +61,8 @@ const Button = forwardRef<HTMLButtonElement, Props>((props, buttonRef) => {
         </i>
       )}
     </Component>
-  );
-});
-Button.displayName = 'Button';
+  )
+})
+Button.displayName = 'Button'
 
-export default Button;
+export default Button

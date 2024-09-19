@@ -1,6 +1,6 @@
-import Link from 'next/link';
+import Link from 'next/link'
 
-import Logo from '@/components/icons/Logo';
+import Logo from '@/components/icons/Logo'
 
 export default function Footer() {
   return (
@@ -29,7 +29,15 @@ export default function Footer() {
             </li>
             <li className="py-3 md:py-0 md:pb-4">
               <Link
-                href="/"
+                href="#pricing"
+                className="text-white transition duration-150 ease-in-out hover:text-zinc-200"
+              >
+                Pricing
+              </Link>
+            </li>
+            <li className="py-3 md:py-0 md:pb-4">
+              <Link
+                href="#about"
                 className="text-white transition duration-150 ease-in-out hover:text-zinc-200"
               >
                 About
@@ -37,8 +45,7 @@ export default function Footer() {
             </li>
           </ul>
         </div>
-        <div className="col-span-1 lg:col-span-2"></div>
-        <div className="flex items-start col-span-1 text-white lg:col-span-6 lg:justify-end">
+        {/* <div className="flex items-start col-span-1 text-white lg:col-span-6 lg:justify-end">
           <ul className="flex flex-col flex-initial md:flex-1">
             <li className="py-3 md:py-0 md:pb-4">
               <p className="font-bold text-white transition duration-150 ease-in-out hover:text-zinc-200">
@@ -62,7 +69,7 @@ export default function Footer() {
               </Link>
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
       <div className="flex flex-col items-center justify-between py-12 space-y-4 md:flex-row bg-zinc-900">
         <div>
@@ -83,5 +90,5 @@ export default function Footer() {
         </div> */}
       </div>
     </footer>
-  );
+  )
 }

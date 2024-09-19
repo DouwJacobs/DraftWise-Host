@@ -4,26 +4,26 @@ const AboutSection = () => {
       title: 'Streamlined Quotes',
       description:
         'DraftWise allows attorneys to set up and manage legal quotes easily, reducing time and effort.',
-      icon: '💼'
+      icon: '💼',
     },
     {
       title: 'Antenuptial Contracts',
       description:
         'Create comprehensive antenuptial contracts efficiently and ensure legal compliance.',
-      icon: '💍'
+      icon: '💍',
     },
     {
       title: 'Attorney-Focused',
       description:
         'Designed specifically for legal professionals, DraftWise supports your work with specialized features.',
-      icon: '⚖️'
-    }
-  ];
+      icon: '⚖️',
+    },
+  ]
 
   return (
-    <section id="about" className="py-12 bg-black">
+    <section id="about" className="bg-black sm:my-32">
       <div className="container mx-auto text-center">
-        <h2 className="text-4xl font-extrabold text-white sm:text-center sm:text-6xl mb-8">
+        <h2 className="text-4xl font-extrabold text-white sm:text-center sm:text-6xl mb-12">
           About DraftWise
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -40,7 +40,7 @@ const AboutSection = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default AboutSection;
+export default AboutSection

@@ -8,14 +8,14 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:react/jsx-runtime',
-    'prettier'
+    'prettier',
   ],
   parserOptions: {
     ecmaVersion: 6,
     sourceType: 'module',
     ecmaFeatures: {
-      jsx: true
-    }
+      jsx: true,
+    },
   },
   rules: {
     '@typescript-eslint/camelcase': 0,
@@ -35,34 +35,34 @@ module.exports = {
     '@typescript-eslint/consistent-type-imports': [
       'error',
       {
-        prefer: 'type-imports'
-      }
+        prefer: 'type-imports',
+      },
     ],
     'no-relative-import-paths/no-relative-import-paths': [
       'error',
-      { allowSameFolder: true }
-    ]
+      { allowSameFolder: true },
+    ],
   },
   overrides: [
     {
       files: ['**/*.tsx'],
       rules: {
-        'react/prop-types': 'off'
-      }
-    }
+        'react/prop-types': 'off',
+      },
+    },
   ],
   plugins: ['jsx-a11y', 'react-hooks', 'formatjs', 'no-relative-import-paths'],
   settings: {
     react: {
       pragma: 'React',
-      version: '16.8'
-    }
+      version: '16.8',
+    },
   },
   env: {
     browser: true,
     node: true,
     jest: true,
-    es6: true
+    es6: true,
   },
-  reportUnusedDisableDirectives: true
-};
+  reportUnusedDisableDirectives: true,
+}

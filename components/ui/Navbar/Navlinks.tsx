@@ -1,21 +1,26 @@
-'use client';
+'use client'
 
-import Link from 'next/link';
-import { SignOut } from '@/utils/auth-helpers/server';
-import { handleRequest } from '@/utils/auth-helpers/client';
-import Logo from '@/components/icons/Logo';
-import { usePathname, useRouter } from 'next/navigation';
-import { getRedirectMethod } from '@/utils/auth-helpers/settings';
-import s from './Navbar.module.css';
+import Logo from '@/components/icons/Logo'
+import { handleRequest } from '@/utils/auth-helpers/client'
+import { SignOut } from '@/utils/auth-helpers/server'
+import { getRedirectMethod } from '@/utils/auth-helpers/settings'
+import Link from 'next/link'
+import { usePathname, useRouter } from 'next/navigation'
+import s from './Navbar.module.css'
 
 interface NavlinksProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  user?: any;
+  user?: any
 }
 
 export default function Navlinks({ user }: NavlinksProps) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const router = getRedirectMethod() === 'client' ? useRouter() : null;
+  const router = getRedirectMethod() === 'client' ? useRouter() : null
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id)
+    element?.scrollIntoView({ behavior: 'smooth' })
+  }
 
   return (
     <div className="relative flex flex-row justify-between py-4 align-center md:py-6">
@@ -25,7 +30,21 @@ export default function Navlinks({ user }: NavlinksProps) {
         </Link>
         <nav className="ml-6 space-x-2 lg:block">
           <Link href="/" className={s.link}>
+            Home
+          </Link>
+          <Link
+            href=""
+            onClick={() => scrollToSection('pricing')}
+            className={s.link}
+          >
             Pricing
+          </Link>
+          <Link
+            href=""
+            onClick={() => scrollToSection('about')}
+            className={s.link}
+          >
+            About
           </Link>
           {user && (
             <Link href="/account" className={s.link}>
@@ -50,5 +69,5 @@ export default function Navlinks({ user }: NavlinksProps) {
         )}
       </div>
     </div>
-  );
+  )
 }

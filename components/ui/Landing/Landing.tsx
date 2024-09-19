@@ -1,13 +1,13 @@
-'use client';
+'use client'
 
-import topogrophy from 'public/topography.svg';
-import Image from 'next/image';
+import Image from 'next/image'
+import topogrophy from 'public/topography.svg'
 
 export default function Landing() {
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    element?.scrollIntoView({ behavior: 'smooth' });
-  };
+    const element = document.getElementById(id)
+    element?.scrollIntoView({ behavior: 'smooth' })
+  }
 
   return (
     <div className="relative min-h-screen bg-gradient-to-r from-emerald-600 via-emerald-700 to-emerald-800 text-white">
@@ -16,8 +16,9 @@ export default function Landing() {
           priority
           src={topogrophy}
           alt="background topography image"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover -z-10"
         />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black pointer-events-none" />
       </div>
       <div className="relative z-10 p-6 max-w-2xl mx-auto text-center sm:mx-auto sm:w-full">
         <div className="flex flex-col items-center justify-center h-screen">
@@ -37,5 +38,5 @@ export default function Landing() {
         </div>
       </div>
     </div>
-  );
+  )
 }

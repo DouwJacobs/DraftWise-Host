@@ -1,6 +1,6 @@
 /* eslint-disable */
-const tailwind = require('prettier-plugin-tailwindcss');
-const organizeImports = require('prettier-plugin-organize-imports');
+const tailwind = require('prettier-plugin-tailwindcss')
+const organizeImports = require('prettier-plugin-organize-imports')
 
 const combinedFormatter = {
   ...tailwind,
@@ -10,12 +10,12 @@ const combinedFormatter = {
       acc[key] = {
         ...tailwind.parsers[key],
         preprocess(code, options) {
-          return organizeImports.parsers[key].preprocess(code, options);
-        }
-      };
-      return acc;
-    }, {})
-  }
-};
+          return organizeImports.parsers[key].preprocess(code, options)
+        },
+      }
+      return acc
+    }, {}),
+  },
+}
 
-module.exports = combinedFormatter;
+module.exports = combinedFormatter

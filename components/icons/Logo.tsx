@@ -1,4 +1,4 @@
-import LogoImg from 'public/dwlogo-white.png';
+import LogoImg from 'public/dwlogo-white.png'
 
 const Logo = ({ ...props }) => (
   <img
@@ -24,6 +24,6 @@ const Logo = ({ ...props }) => (
   //     fill="black"
   //   />
   // </svg>
-);
+)
 
-export default Logo;
+export default Logo
