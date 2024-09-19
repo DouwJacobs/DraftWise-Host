@@ -6,6 +6,7 @@ import {
   getSubscription,
   getUser
 } from '@/utils/supabase/queries';
+import AboutSection from '@/components/ui/About/About';
 
 export default async function PricingPage() {
   const supabase = createClient();
@@ -18,6 +19,7 @@ export default async function PricingPage() {
   return (
     <>
       <Landing />
+      <AboutSection />
       <Pricing
         user={user}
         products={products ?? []}
